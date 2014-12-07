@@ -5,7 +5,7 @@ mkfifo tmppipe
 trap "rm -f tmppipe" EXIT
 while true
 do
-  cat tmppipe | nc -l 8081 > >(
+  cat tmppipe | nc -l 8081 2>>error.log |(
         x=0;
         while read lines[$x] && [ ${#lines[$x]} -gt 1 ];
         do
